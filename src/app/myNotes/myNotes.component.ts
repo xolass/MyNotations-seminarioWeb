@@ -35,7 +35,7 @@ export class MyNotesComponent implements OnInit {
     cardClick(note): void {
         this.routerExtensions.navigate(['readNote'], {
             queryParams: {
-                note: 'silçduhfg',
+                note: JSON.stringify(note),
             },
             transition: {
                 name: "fade"
