@@ -4,17 +4,23 @@
     because ActionItems are shown on the right side of the ActionBar
     -->
     <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
-    <!-- 
-    Use the ActionItem for IOS with position set to left. Using the
-    NavigationButton as a side-drawer button in iOS is not possible,
-    because its function is to always navigate back in the application.
-    -->
-    <ActionItem icon="res://menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
-    </ActionItem>
+
     <Label text="Favoritos"></Label>
+
 </ActionBar>
 
-<GridLayout class="page__content">
-    <Label class="page__content-icon fas" text="&#xf005;"></Label>
-    <Label class="page__content-placeholder" text="<!-- Page content goes here -->"></Label>
-</GridLayout>
+
+<ScrollView>
+    <StackLayout *ngIf="(notes.length)">
+        <CardView *ngFor="let note of notes" class="card" elevation="40" radius="10">
+            <StackLayout class="card-layout" (tap)="cardClick(note)">
+                <Label class="title h2" text="{{note._title}}"></Label>
+                <Label class="preview" text="{{note._preview}}"></Label>
+            </StackLayout>
+        </CardView>
+    </StackLayout>
+    <GridLayout class="no-data" *ngIf="!(notes.length)">
+        <Label class="page__content-placeholder" text="Nenhuma anotação :("></Label>
+    </GridLayout>
+</ScrollView>
+<!-- <Fab class="fas fab-button favorite-text" icon="font://&#xf055;" (tap)="toggleFavorite()"></Fab> -->

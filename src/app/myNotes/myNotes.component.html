@@ -10,18 +10,18 @@
     <ActionItem icon="font://&#xf055;" style="font-size:13px!important" class="fas" (tap)="onNavItemTap('/newNote')"></ActionItem>
 </ActionBar>
 
+
 <ScrollView>
     <StackLayout *ngIf="(notes.length)">
         <CardView *ngFor="let note of notes" class="card" elevation="40" radius="10">
             <StackLayout class="card-layout" (tap)="cardClick(note)">
-                <Label class="title h2" text="{{note.title}}"></Label>
-                <Label class="preview" text="{{note.preview}}"></Label>
+                <Label class="title h2" text="{{note._title}}"></Label>
+                <Label class="preview" text="{{note._preview}}"></Label>
             </StackLayout>
-            <!-- <Label text="{{note.content}}"></Label> -->
         </CardView>
-        <!-- <ScrollView>dfgdgh</ScrollView> -->
     </StackLayout>
     <GridLayout class="no-data" *ngIf="!(notes.length)">
         <Label class="page__content-placeholder" text="Nenhuma anotação :("></Label>
     </GridLayout>
 </ScrollView>
+<!-- <Fab class="fas fab-button favorite-text" icon="font://&#xf055;" (tap)="toggleFavorite()"></Fab> -->

@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 import { RouterExtensions } from "nativescript-angular/router";
-import { Navigation } from "@angular/router";
-import { getAllNotes } from "~/helpers/LocalStorage";
 import { registerElement } from "nativescript-angular/element-registry";
 import { CardView } from "nativescript-cardview";
+import { screen } from 'tns-core-modules/platform'
+import { getAllNotes } from "~/app/helpers/LocalStorage";
 
 registerElement("CardView", () => CardView);
 
@@ -16,21 +16,18 @@ registerElement("CardView", () => CardView);
     styleUrls: ['./myNotes.component.css']
 })
 export class MyNotesComponent implements OnInit {
-    notes = [{
-        id: 1,
-        isFavorite: false,
-        title: 'liszdhfg',
-        content: 'sdfgihlssodfu',
-        preview: 'skljdyflsalslsl'
-    }];
+    notes = [];
+    screen = {
+        height: screen.mainScreen.heightDIPs,
+        width: screen.mainScreen.widthDIPs
+    };
     constructor(private routerExtensions: RouterExtensions) {
         // Use the component constructor to inject providers.
     }
-
     ngOnInit(): void {
-        // this.notes = getAllNotes();
-        // Init your component properties here.
+        this.notes = getAllNotes();
     }
+
 
     cardClick(note): void {
         this.routerExtensions.navigate(['readNote'], {

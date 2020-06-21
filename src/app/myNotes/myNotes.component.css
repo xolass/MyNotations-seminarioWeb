@@ -1,0 +1,22 @@
+.card {
+    background-color: #fff;
+    color: #4d4d4d;
+    margin: 15 15 0;
+}
+.card-layout {
+    padding: 10 15;
+}
+.card-layout .title {
+    margin-bottom: 8;
+}
+.card-layout .preview {
+  padding-left: 10;
+  font-size: 14px;
+}
+.no-data {
+  display:flex;
+  text-align:center;
+  padding:40;
+}
+
+

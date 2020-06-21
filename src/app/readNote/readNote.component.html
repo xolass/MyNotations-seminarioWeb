@@ -8,13 +8,23 @@
     Use the ActionItem for IOS with position set to left. Using the
     NavigationButton as a side-drawer button in iOS is not possible,
     because its function is to always navigate back in the application.
-    -->
-    <ActionItem icon="res://menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
-    </ActionItem>
-    <Label text="Editando"></Label>
+-->
+    <Label textWrap="true" text=""></Label>
+    <ActionItem *ngIf="(note._isFavorite)" icon="font://&#xf005;" class="fas navbar-icon" (tap)="toggleFavorite()"></ActionItem>
+    <ActionItem *ngIf="!(note._isFavorite)" icon="font://&#xf005;" class="far navbar-icon" (tap)="toggleFavorite()"></ActionItem>
+    <ActionItem icon="font://&#xf044;" class="fas navbar-icon" (tap)="editNote()"></ActionItem>
+    <ActionItem icon="font://&#xf1f8;" class="fas navbar-icon" (tap)="deleteNote()"></ActionItem>
+
 </ActionBar>
 
-<GridLayout class="page__content">
-    <Label class="page__content-icon far" text="&#xf1ea;"></Label>
-    <Label class="page__content-placeholder" text="<!-- Page content goes here -->"></Label>
-</GridLayout>
+
+<ScrollView>
+    <StackLayout class="card-layout">
+        <FlexboxLayout class="title-box" width="100" orientation="horizontal">
+            <Label textWrap="true" class="h2" text="{{note._title}}"></Label>
+        </FlexboxLayout>
+
+        <StackLayout class="hr"> </StackLayout>
+        <Label textWrap="true" class="preview" text="{{note._content}}"></Label>
+    </StackLayout>
+</ScrollView>

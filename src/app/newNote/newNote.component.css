@@ -1,0 +1,38 @@
+.card {
+  margin:10 15;
+}
+.card-layout .preview {
+  padding-left: 10;
+  font-size: 16px;
+}
+
+.title-box {
+  justify-content:space-between;
+}
+.title {
+  font-size:16px;
+  border-width:1px;
+  padding:10 15;
+  font-size:16px;
+  border-color:rgba(00,69,68, 0.5);
+}
+
+.content{
+  font-size:16px;
+  border-width:1px;
+  padding:10 15;
+  font-size:16px;
+  border-color:rgba(00,69,68, 0.5);
+}
+
+.navbar-icon {
+  vertical-align: middle;
+  margin:auto;
+  font-size: 10px;
+}
+.border {
+
+  border-color: red;
+  border-width: 1px;
+  border-style: solid;
+} 
